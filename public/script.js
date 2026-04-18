@@ -1,5 +1,8 @@
+// API base URL
+const API = "https://your-app.up.railway.app";
+
 // Load devices
-fetch("/devices")
+fetch(API + "/devices")
 .then(res => res.json())
 .then(data => {
   let html = "";
@@ -21,7 +24,7 @@ fetch("/devices")
 
 // Toggle device
 function toggle(id, status) {
-  fetch("/devices/" + id, {
+  fetch(API + "/devices/" + id, {
     method: "PUT",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ status })
