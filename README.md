@@ -11,8 +11,6 @@
 
 **A secure, centralized smart home intelligence ecosystem for real-time device control and cloud-native data management.**
 
-[Features](#-features) · [Security](#-security-architecture) · [Architecture](#-architecture) · [Tech Stack](#️-tech-stack) · [Setup](#-setup-instructions) · [Database](#-database-setup--access) · [Demo](#-live-demo)
-
 </div>
 
 ---
@@ -40,7 +38,6 @@ The **Integrated Application House** is a full-stack IoT management platform des
 ---
 
 ## 🏗️ Architecture
-
 
 Frontend (Dashboard UI)
 │
@@ -96,17 +93,16 @@ https://project-cfi34-dy4nem3l4-kishan-maker136s-projects.vercel.app
 ```bash
 git clone https://github.com/kishan-maker136/integrated-application-house.git
 cd integrated-application-house
+
 2️⃣ Install Dependencies
 npm install
+
 🗄️ Database Setup & Access
 🔹 Step 1: Create Supabase Project
 Go to https://supabase.com
 Create a new project
 Wait for database initialization
 🔹 Step 2: Create Table
-
-Run this SQL in Supabase SQL Editor:
-
 CREATE TABLE devices (
     device_id SERIAL PRIMARY KEY,
     room_id INT,
@@ -117,7 +113,6 @@ CREATE TABLE devices (
 🔹 Step 3: Get DATABASE_URL
 
 Go to:
-
 Project Settings → Database → Connection String
 
 Example:
@@ -164,22 +159,27 @@ Manual deploy	✅ CI/CD
 📱 Mobile app
 🌐 Real IoT integration
 👨‍💻 Author
+<div align="center">
 
 Kishan BC
 B.Tech CSE (Cybersecurity)
 Presidency University, Bangalore
 
-🔗 GitHub: https://github.com/kishan-maker136
+🔗 https://github.com/kishan-maker136
+
+</div>
 
 ⭐ Support
+<div align="center">
 
 If you found this useful:
 
 ⭐ Star the repo
 🍴 Fork it
 📢 Share it
-<div align="center">
+
+<br><br>
 
 💡 Building secure systems today for a smarter tomorrow.
 
-</div> ``
+</div> ```
