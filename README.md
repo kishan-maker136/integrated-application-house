@@ -2,22 +2,16 @@
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:4facfe,100:00f2fe&height=200&section=header&text=Integrated%20Application%20House&fontSize=40&fontColor=ffffff&animation=fadeIn" />
-
-<br/>
-
-![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-336791?style=for-the-badge&logo=postgresql&logoColor=white)
-![Vercel](https://img.shields.io/badge/Deployed-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-![Security](https://img.shields.io/badge/Security-Focused-blue?style=for-the-badge)
+![Vercel](https://img.shields.io/badge/Vercel-Deployment-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
+![Security](https://img.shields.io/badge/Security-Hardened-blue?style=for-the-badge)
 
-<br/>
+**A secure, centralized smart home intelligence ecosystem for real-time device control and cloud-native data management.**
 
-**🚀 A Secure, Serverless Smart Home Dashboard for Real-Time Device Management and Data Persistence.**
-
-🌐 **Live Demo:** [View Project on Vercel](https://project-cfi34-dy4nem3l4-kishan-maker136s-projects.vercel.app)  
-📖 **API Base:** `https://project-cfi34-dy4nem3l4-kishan-maker136s-projects.vercel.app/api`
+[Features](#-features) · [Security](#-security-architecture) · [Architecture](#-architecture) · [Tech Stack](#️-tech-stack) · [Setup](#-setup-instructions) · [Database](#-database-setup--access) · [Demo](#-live-demo)
 
 </div>
 
@@ -25,32 +19,173 @@
 
 ## 🚀 Project Overview
 
-The **Integrated Application House** is a professional-grade IoT management ecosystem. It bridges the gap between hardware logic and cloud-native software architecture, providing a secure interface to control home environments from anywhere in the world.
+The **Integrated Application House** is a full-stack IoT management platform designed to:
 
-> *"Built with a security-first mindset, this project demonstrates how to handle sensitive IoT data using modern cloud infrastructure and protected API patterns."*
-
----
-
-## ✨ Key Features
-
-| Feature                | Technical Implementation                                    |
-| ---------------------- | ----------------------------------------------------------- |
-| 🔐 **Secure Backend** | Node.js with Parameterized SQL (Prevents SQL Injection)     |
-| 💡 **Device Control** | Real-time state management via RESTful API                 |
-| ☁️ **Cloud Database** | Supabase (PostgreSQL) in `ap-south-1` for low latency      |
-| ⚡ **Serverless logic** | Hosted on Vercel Edge functions for 99.9% availability      |
-| 🛡️ **Secret Shield** | Zero-leak credential management via Vercel Environment Vars |
-| 📱 **Responsive UI** | Fluid layout designed for mobile and desktop dashboards     |
+- 🔐 Secure device communication via REST APIs  
+- ☁️ Persist data using PostgreSQL (Supabase)  
+- 📊 Monitor logs through an admin dashboard  
+- ⚡ Scale using serverless architecture (Vercel)  
 
 ---
 
-## 🏗️ System Architecture
+## ✨ Features
+
+- 💡 Real-time device ON/OFF control  
+- 🛡️ Secure admin dataset monitoring  
+- ⚡ Serverless backend (Vercel Functions)  
+- 📦 Persistent PostgreSQL storage  
+- 🎨 Responsive UI (Flexbox + Grid)  
+- 🔐 Built-in SQL injection protection  
+
+---
+
+## 🏗️ Architecture
 
 
+Frontend (Dashboard UI)
+│
+▼
+Vercel Edge Routing
+│
+▼
+Node.js + Express API
+│
+├── Secure Queries ($1, $2)
+│
+▼
+Supabase PostgreSQL
+│
+▼
+JSON Response → UI Update
 
-```mermaid
-graph LR
-    A[Frontend: JS/HTML5] -- REST API --> B[Vercel Serverless Functions]
-    B -- Secure Connection --> C[Supabase PostgreSQL]
-    C -- Data Persistence --> B
-    B -- JSON Response --> A
+
+---
+
+## 🛡️ Security Architecture
+
+- 🔐 **Parameterized Queries** → Prevent SQL Injection  
+- 🔑 **Environment Variables** → No hardcoded secrets  
+- 🌐 **CORS Policy** → Restricted API access  
+- 🛡️ **Sanitized Errors** → No sensitive leaks  
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|------|-----------|
+| Frontend | HTML5, CSS3, JavaScript |
+| Backend | Node.js, Express.js |
+| Database | Supabase (PostgreSQL) |
+| Deployment | Vercel |
+| Middleware | dotenv, cors, pg |
+
+---
+
+## 🎥 Live Demo
+
+🌐 **Live App:**  
+https://project-cfi34-dy4nem3l4-kishan-maker136s-projects.vercel.app
+
+---
+
+## ⚙️ Setup Instructions
+
+### Prerequisites
+- Node.js (v18+)
+- Supabase Account
+
+---
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/kishan-maker136/integrated-application-house.git
+cd integrated-application-house
+2️⃣ Install Dependencies
+npm install
+🗄️ Database Setup & Access
+🔹 Step 1: Create Supabase Project
+Go to https://supabase.com
+Create a new project
+Wait for database initialization
+🔹 Step 2: Create Table
+
+Run this SQL in Supabase SQL Editor:
+
+CREATE TABLE devices (
+    device_id SERIAL PRIMARY KEY,
+    room_id INT,
+    device_name VARCHAR(255),
+    device_type VARCHAR(100),
+    status INT DEFAULT 0
+);
+🔹 Step 3: Get DATABASE_URL
+
+Go to:
+
+Project Settings → Database → Connection String
+
+Example:
+
+postgresql://postgres:password@db.xxxxxx.supabase.co:5432/postgres
+🔹 Step 4: Configure Environment
+
+Create .env file:
+
+DATABASE_URL=your_supabase_connection_string
+🔹 Step 5: Run Server
+node server.js
+
+Server runs at:
+
+http://localhost:3000
+🧪 API Testing
+Get All Devices
+GET http://localhost:3000/devices
+Update Device
+POST http://localhost:3000/update-device
+🗃️ Access Database
+Option 1: Supabase Dashboard
+Use Table Editor
+Option 2: pgAdmin / DBeaver
+Field	Value
+Host	db.xxxxxx.supabase.co
+Port	5432
+User	postgres
+Password	your-password
+Database	postgres
+Option 3: psql CLI
+psql "your_DATABASE_URL"
+🧠 What Makes This Special?
+Basic IoT Project	This Project
+Local only	✅ Cloud-based
+No database	✅ PostgreSQL
+Vulnerable	✅ Secure queries
+Manual deploy	✅ CI/CD
+🚀 Future Improvements
+🔐 JWT Authentication
+👥 Role-based access
+📊 Analytics dashboard
+📱 Mobile app
+🌐 Real IoT integration
+👨‍💻 Author
+
+Kishan BC
+B.Tech CSE (Cybersecurity)
+Presidency University, Bangalore
+
+GitHub: https://github.com/kishan-maker136
+
+⭐ Support
+
+If you found this useful:
+
+⭐ Star the repo
+🍴 Fork it
+📢 Share it
+<div align="center">
+
+💡 Building secure systems today for a smarter tomorrow.
+
+</div> ```
