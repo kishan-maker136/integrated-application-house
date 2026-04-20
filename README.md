@@ -93,16 +93,29 @@ https://project-cfi34-dy4nem3l4-kishan-maker136s-projects.vercel.app
 ```bash
 git clone https://github.com/kishan-maker136/integrated-application-house.git
 cd integrated-application-house
+```
 
-2️⃣ Install Dependencies
+### 2️⃣ Install Dependencies
+
+```bash
 npm install
+```
 
-🗄️ Database Setup & Access
-🔹 Step 1: Create Supabase Project
-Go to https://supabase.com
-Create a new project
-Wait for database initialization
-🔹 Step 2: Create Table
+---
+
+## 🗄️ Database Setup & Access
+
+### 🔹 Step 1: Create Supabase Project
+
+- Go to https://supabase.com  
+- Create a new project  
+- Wait for database initialization  
+
+---
+
+### 🔹 Step 2: Create Table
+
+```sql
 CREATE TABLE devices (
     device_id SERIAL PRIMARY KEY,
     room_id INT,
@@ -110,76 +123,137 @@ CREATE TABLE devices (
     device_type VARCHAR(100),
     status INT DEFAULT 0
 );
-🔹 Step 3: Get DATABASE_URL
+```
 
-Go to:
-Project Settings → Database → Connection String
+---
+
+### 🔹 Step 3: Get DATABASE_URL
+
+Go to:  
+**Project Settings → Database → Connection String**
 
 Example:
 
+```bash
 postgresql://postgres:password@db.xxxxxx.supabase.co:5432/postgres
-🔹 Step 4: Configure Environment
+```
 
-Create a .env file:
+---
 
+### 🔹 Step 4: Configure Environment
+
+Create a `.env` file:
+
+```env
 DATABASE_URL=your_supabase_connection_string
-🔹 Step 5: Run Server
+```
+
+---
+
+### 🔹 Step 5: Run Server
+
+```bash
 node server.js
+```
 
 Server runs at:
 
+```
 http://localhost:3000
-🧪 API Testing
-🔹 Get All Devices
+```
+
+---
+
+## 🧪 API Testing
+
+### 🔹 Get All Devices
+
+```
 GET http://localhost:3000/devices
-🔹 Update Device
+```
+
+### 🔹 Update Device
+
+```
 POST http://localhost:3000/update-device
-🗃️ Access Database
-🔸 Option 1: Supabase Dashboard
-Use Table Editor to view and edit data
-🔸 Option 2: pgAdmin / DBeaver
-Field	Value
-Host	db.xxxxxx.supabase.co
-Port	5432
-User	postgres
-Password	your-password
-Database	postgres
-🔸 Option 3: psql CLI
+```
+
+---
+
+## 🗃️ Access Database
+
+### 🔸 Option 1: Supabase Dashboard
+- Use **Table Editor** to view and edit data
+
+---
+
+### 🔸 Option 2: pgAdmin / DBeaver
+
+| Field     | Value                  |
+|----------|------------------------|
+| Host     | db.xxxxxx.supabase.co |
+| Port     | 5432                  |
+| User     | postgres              |
+| Password | your-password         |
+| Database | postgres              |
+
+---
+
+### 🔸 Option 3: psql CLI
+
+```bash
 psql "your_DATABASE_URL"
-🧠 What Makes This Special?
-Basic IoT Project	This Project
-Local only	✅ Cloud-based
-No database	✅ PostgreSQL
-Vulnerable	✅ Secure queries
-Manual deploy	✅ CI/CD
-🚀 Future Improvements
-🔐 JWT Authentication
-👥 Role-based access
-📊 Analytics dashboard
-📱 Mobile app
-🌐 Real IoT integration
-👨‍💻 Author
+```
+
+---
+
+## 🧠 What Makes This Special?
+
+| Basic IoT Project | This Project |
+|------------------|-------------|
+| Local only       | ✅ Cloud-based |
+| No database      | ✅ PostgreSQL |
+| Vulnerable       | ✅ Secure queries |
+| Manual deploy    | ✅ CI/CD |
+
+---
+
+## 🚀 Future Improvements
+
+- 🔐 JWT Authentication  
+- 👥 Role-based access  
+- 📊 Analytics dashboard  
+- 📱 Mobile app  
+- 🌐 Real IoT integration  
+
+---
+
+## 👨‍💻 Author
+
 <div align="center">
 
-Kishan BC
-B.Tech CSE (Cybersecurity)
-Presidency University, Bangalore
+**Kishan BC**  
+B.Tech CSE (Cybersecurity)  
+Presidency University, Bangalore  
 
-🔗 https://github.com/kishan-maker136
+🔗 https://github.com/kishan-maker136  
 
 </div>
 
-⭐ Support
+---
+
+## ⭐ Support
+
 <div align="center">
 
 If you found this useful:
 
-⭐ Star the repo
-🍴 Fork it
-📢 Share it
+⭐ Star the repo  
+🍴 Fork it  
+📢 Share it  
 
 <br><br>
 
-💡 Building secure systems today for a smarter tomorrow.
+💡 *Building secure systems today for a smarter tomorrow.*
 
-</div> ```
+</div>
