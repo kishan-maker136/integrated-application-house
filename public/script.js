@@ -1,7 +1,7 @@
 // 🔹 Supabase Setup
 const supabase = window.supabase.createClient(
   "https://cpbyotxrrcpyqoowwmex.supabase.co",
-  "cpbyotxrrcpyqoowwmex"
+  "sb_publishable_Mz__OJ7sg8HBGvxThUAAow_nfORgCRZ"
 );
 
 
