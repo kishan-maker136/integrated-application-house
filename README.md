@@ -84,6 +84,11 @@ JSON Response → UI Update
 🌐 **Live App:**  
 https://project-cfi34-dy4nem3l4-kishan-maker136s-projects.vercel.app
 
+🌐 **Domains**
+project-cfi34.vercel.app
+project-cfi34-git-main-kishan-maker136s-projects.vercel.app
+project-cfi34-jzkn8ggl8-kishan-maker136s-projects.vercel.app
+
 ---
 
 ## ⚙️ Setup Instructions
