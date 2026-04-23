@@ -1,71 +1,89 @@
-// Navigation Logic
+// 🔹 Supabase Setup
+const supabase = window.supabase.createClient(
+  "https://cpbyotxrrcpyqoowwmex.supabase.co",
+  "cpbyotxrrcpyqoowwmex"
+);
+
+
+// 🔹 Navigation Logic
 function switchPage(pageId, element) {
     document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     document.getElementById(pageId).classList.add('active');
     element.classList.add('active');
-    
+
     if(pageId === 'admin') loadTuples();
 }
 
-// Sending data using relative paths (works locally AND on Railway)
+
+// 🔹 Add Device
 async function submitToBackend() {
     const name = document.getElementById('newDevName').value;
-    const roomId = document.getElementById('newDevRoom').value;
-    const type = document.getElementById('newDevType').value;
 
-    if(!name) return alert("Please enter a device name.");
+    if (!name) return alert("Please enter a device name.");
 
-    try {
-        const res = await fetch('/api/add-device', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, roomId, type })
-        });
+    const { data, error } = await supabase
+        .from("devices")
+        .insert([{ name }]);
 
-        if(res.ok) {
-            alert(`Success! ${name} added.`);
-            document.getElementById('newDevName').value = '';
-            updateDashboard(); 
-        }
-    } catch (error) {
-        alert("Connection Failed");
+    if (error) {
+        alert("Error: " + error.message);
+        console.log(error);
+    } else {
+        alert(`Success! ${name} added.`);
+        document.getElementById('newDevName').value = '';
+        updateDashboard();
     }
 }
 
+
+// 🔹 Load Dashboard
 async function updateDashboard() {
-    const res = await fetch('/api/admin/dataset', { headers: { 'admin-auth': 'kishan-secure-2026' } });
-    const data = await res.json();
-    
+    const { data, error } = await supabase
+        .from("devices")
+        .select("*")
+        .order("id", { ascending: false });
+
+    if (error) {
+        console.log("Error loading dashboard:", error);
+        return;
+    }
+
     const container = document.getElementById('dashboard-toggles');
-    container.innerHTML = data.slice(0, 4).map(dev => `
-        <div class="toggle-btn ${dev.status ? 'on' : ''}" onclick="toggleDevice(${dev.device_id}, ${dev.status})">
-            ${dev.device_name} <span class="dot"></span>
-        </div>
-    `).join('');
+
+    container.innerHTML = data.length
+        ? data.map(dev => `
+            <div class="toggle-btn">
+                ${dev.name}
+            </div>
+        `).join('')
+        : "No devices provisioned.";
 }
 
-async function toggleDevice(id, status) {
-    await fetch('/api/update-status', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, status: status ? 0 : 1 })
-    });
-    updateDashboard();
-}
 
+// 🔹 Load Admin Table
 async function loadTuples() {
-    const res = await fetch('/api/admin/dataset', { headers: { 'admin-auth': 'kishan-secure-2026' } });
-    const data = await res.json();
+    const { data, error } = await supabase
+        .from("devices")
+        .select("*")
+        .order("id", { ascending: false });
+
+    if (error) {
+        console.log("Error loading table:", error);
+        return;
+    }
+
     const tableBody = document.getElementById('tuple-body');
+
     tableBody.innerHTML = data.map(row => `
         <tr>
-            <td>${row.device_id}</td>
-            <td><b>${row.device_name}</b></td>
-            <td>${row.device_type}</td>
-            <td><span style="color:${row.status ? '#10b981':'#ef4444'}">${row.status ? '● ON' : '○ OFF'}</span></td>
+            <td>${row.id}</td>
+            <td><b>${row.name}</b></td>
+            <td>${new Date(row.created_at).toLocaleString()}</td>
         </tr>
     `).join('');
 }
 
+
+// 🔹 Load on page start
 window.onload = updateDashboard;
